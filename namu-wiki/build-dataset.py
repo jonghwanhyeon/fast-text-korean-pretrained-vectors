@@ -8,7 +8,7 @@ from tqdm import tqdm
 from namuwiki.extractor import extract_text
 
 namu_wiki_dump_filename = 'namuwiki_20170327.json'
-output_filename = 'namuwiki_20170327_dataset'
+dataset_filename = 'namuwiki_20170327_dataset'
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -45,7 +45,7 @@ with Pool() as pool:
             progress_bar.update()
 
 logger.info('Writing file...')
-with open(output_filename, 'w', encoding='utf-8') as output_file:
+with open(dataset_filename, 'w', encoding='utf-8') as output_file:
     for document in tqdm(documents):
         decomposed_text = unicodedata.normalize('NFD', document['text'])
         print(decomposed_text, end=' ', file=output_file)
