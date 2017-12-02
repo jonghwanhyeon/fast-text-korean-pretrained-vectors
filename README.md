@@ -1,0 +1,1 @@
+# fast-text-korean-pretrained-vectors
