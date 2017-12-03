@@ -11,13 +11,14 @@ import requests
 number_of_attempts = 5
 authentication_filename = 'authentication.json'
 
-if not os.path.exists(authentication_filename):
+base_path = os.path.dirname(os.path.abspath(__file__))
+if not os.path.exists(os.path.join(base_path, authentication_filename)):
     sys.exit('{} does not exist'.format(authentication_filename))
 
 if len(sys.argv) == 1:
     sys.exit('Usage: python3 {} <message>'.format(sys.argv[0]))
 
-with open('authentication.json', 'r', encoding='utf-8') as input_file:
+with open(os.path.join(base_path, authentication_filename), 'r', encoding='utf-8') as input_file:
     authentication = json.load(input_file)
 
 parameters = {
